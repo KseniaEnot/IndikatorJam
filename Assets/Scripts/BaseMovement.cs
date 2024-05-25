@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,5 +13,17 @@ public class BaseMovement : MonoBehaviour
     {
         groundTileMap = tilesManager.groundTileMap;
         collisionTileMap = tilesManager.collisionTileMap;
+    }
+
+    protected IEnumerator MoveCoroutine(Vector3 direction, Action endFunction)
+    {
+        const int times = 20;
+        for(int i = 0; i < times; i++)
+        {
+            transform.position += direction / times;
+            yield return new WaitForSeconds(0.01f);
+        }
+        
+        endFunction();
     }
 }

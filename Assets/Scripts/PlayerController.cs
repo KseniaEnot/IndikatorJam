@@ -38,11 +38,15 @@ public class PlayerController : BaseMovement
     {
         if (CanMove(direction)){
             characterAnimator.SetBool("IsWalk", true);
-            transform.position += (Vector3)direction;
-            moveRandomizer.HandleMovement();
-            playerMoved.Invoke();
-            //characterAnimator.SetBool("IsWalk", false);
+            StartCoroutine(MoveCoroutine((Vector3)direction, OnMoveEnd));
         }
+    }
+
+    private void OnMoveEnd()
+    {
+        moveRandomizer.HandleMovement();
+        playerMoved.Invoke();
+        characterAnimator.SetBool("IsWalk", false);
     }
 
     private bool CanMove(Vector2 direction)
