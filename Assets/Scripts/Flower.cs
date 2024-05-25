@@ -64,7 +64,8 @@ public class Flower : BaseMovement
 
         if (bestDirection != null)
         {
-            transform.parent.transform.position += (Vector3)bestDirection;        
+            characterAnimator.SetBool("IsWalk", true);
+            StartCoroutine(MoveCoroutine(transform.parent.transform, (Vector3)bestDirection, OnMoveEnd));    
         }
     }
     
@@ -72,8 +73,6 @@ public class Flower : BaseMovement
     {
         Vector3Int gridPosition = groundTileMap.WorldToCell(transform.position + direction);
         if (!groundTileMap.HasTile(gridPosition) || collisionTileMap.HasTile(gridPosition)){
-            characterAnimator.SetBool("IsWalk", true);
-            StartCoroutine(MoveCoroutine((Vector3)direction, OnMoveEnd));
             return false;
         }
 

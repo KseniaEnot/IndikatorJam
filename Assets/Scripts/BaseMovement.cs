@@ -16,11 +16,11 @@ public class BaseMovement : MonoBehaviour
         collisionTileMap = tilesManager.collisionTileMap;
     }
 
-    protected IEnumerator MoveCoroutine(Vector3 direction, Action endFunction)
+    protected IEnumerator MoveCoroutine(Transform moveTransform, Vector3 direction, Action endFunction)
     {
         for(int i = 0; i < times; i++)
         {
-            transform.position += direction / times;
+            moveTransform.position += direction / times;
             yield return new WaitForSeconds(0.01f);
         }
         

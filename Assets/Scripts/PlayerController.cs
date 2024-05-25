@@ -39,7 +39,7 @@ public class PlayerController : BaseMovement
     {
         if (CanMove(direction)){
             characterAnimator.SetBool("IsWalk", true);
-            StartCoroutine(MoveCoroutine((Vector3)direction, OnMoveEnd));
+            StartCoroutine(MoveCoroutine(transform, (Vector3)direction, OnMoveEnd));
         }
     }
 
