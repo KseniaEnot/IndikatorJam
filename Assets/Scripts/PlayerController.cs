@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -11,16 +8,28 @@ public class PlayerController : MonoBehaviour
 
     private Controls inputActions;
     private FlowerCollection flowerCollection;
+    private MoveRandomizer moveRandomizer;
 
     void Awake()
     {
         inputActions = new Controls();
         flowerCollection = gameObject.GetComponent<FlowerCollection>();
+        moveRandomizer = gameObject.GetComponent<MoveRandomizer>();
     }
 
     void Start()
     {
         inputActions.Main.Move.performed += ctx => Move(ctx.ReadValue<Vector2>());
+        inputActions.Main.Roll.performed += ctx => Roll();
+    }
+
+    private void Roll()
+    {
+        if (moveRandomizer.CanMove())
+        {
+            return;
+        }
+        moveRandomizer.GenerateNew();
     }
 
     private void Move(Vector2 direction)
@@ -28,13 +37,14 @@ public class PlayerController : MonoBehaviour
         if (CanMove(direction)){
             transform.position += (Vector3)direction;
             flowerCollection.CheckFlowers();
+            moveRandomizer.HandleMovement();
         }
     }
 
     private bool CanMove(Vector2 direction)
     {
         Vector3Int gridPosition = groundTileMap.WorldToCell(transform.position + (Vector3)direction);
-        if (!groundTileMap.HasTile(gridPosition) || collisionTileMap.HasTile(gridPosition)){
+        if (!groundTileMap.HasTile(gridPosition) || collisionTileMap.HasTile(gridPosition) || !moveRandomizer.CanMove()){
             return false;
         }
 
