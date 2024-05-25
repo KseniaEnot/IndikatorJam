@@ -5,18 +5,16 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Tilemap groundTileMap;
     [SerializeField] private Tilemap collisionTileMap;
-
     public Animator characterAnimator;
+    [SerializeField] private MoveRandomizer moveRandomizer;
 
     private Controls inputActions;
     private FlowerCollection flowerCollection;
-    private MoveRandomizer moveRandomizer;
 
     void Awake()
     {
         inputActions = new Controls();
         flowerCollection = gameObject.GetComponent<FlowerCollection>();
-        moveRandomizer = gameObject.GetComponent<MoveRandomizer>();
     }
 
     void Start()

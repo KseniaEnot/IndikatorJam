@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &292094689271646109
+--- !u!1 &8630541689025459638
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 208559907460876220}
-  - component: {fileID: 1704889362233322192}
-  - component: {fileID: 3756777404009911802}
-  - component: {fileID: 6530115183653241920}
-  - component: {fileID: 1931330278157116113}
+  - component: {fileID: 1460249529378019018}
+  - component: {fileID: 801958687919134650}
+  - component: {fileID: 8607965761098702626}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &208559907460876220
+--- !u!4 &1460249529378019018
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 292094689271646109}
+  m_GameObject: {fileID: 8630541689025459638}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.46, y: 0.33, z: 0}
+  m_LocalPosition: {x: 0.12282044, y: 0.4848321, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1704889362233322192
+--- !u!212 &801958687919134650
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 292094689271646109}
+  m_GameObject: {fileID: 8630541689025459638}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -78,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5108295375642066020, guid: 4f384ed7635fbd14990bc09149fa26f2, type: 3}
+  m_Sprite: {fileID: -5522338522932739230, guid: c3cb22f3fbb38f24991820328f6b06aa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -89,54 +87,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3756777404009911802
+--- !u!114 &8607965761098702626
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 292094689271646109}
+  m_GameObject: {fileID: 8630541689025459638}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f54951dc2c32ded4fac3c053b08fb9d0, type: 3}
+  m_Script: {fileID: 11500000, guid: b933909969ece164493f9c60c8a93c2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundTileMap: {fileID: 0}
-  collisionTileMap: {fileID: 0}
-  characterAnimator: {fileID: 1931330278157116113}
---- !u!114 &6530115183653241920
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 292094689271646109}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0319f9c31f69874cae8c68dd3c8f855, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flowerTileMap: {fileID: 0}
-  flowerText: {fileID: 0}
---- !u!95 &1931330278157116113
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 292094689271646109}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 90d067f38aa64af498a581c0a64b32de, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  diceSpries:
+  - {fileID: -5522338522932739230, guid: c3cb22f3fbb38f24991820328f6b06aa, type: 3}
+  - {fileID: -1253106649, guid: c3cb22f3fbb38f24991820328f6b06aa, type: 3}
+  - {fileID: -341784619, guid: c3cb22f3fbb38f24991820328f6b06aa, type: 3}
+  - {fileID: -1202306093, guid: c3cb22f3fbb38f24991820328f6b06aa, type: 3}
+  dice: {fileID: 801958687919134650}
