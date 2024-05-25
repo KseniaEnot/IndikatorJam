@@ -10,32 +10,24 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Tilemap collisionTileMap;
 
     private Controls inputActions;
+    private FlowerCollection flowerCollection;
 
     void Awake()
     {
         inputActions = new Controls();
+        flowerCollection = gameObject.GetComponent<FlowerCollection>();
     }
 
     void Start()
     {
         inputActions.Main.Move.performed += ctx => Move(ctx.ReadValue<Vector2>());
     }
-    
-    private void OnEnable()
-    {
-        inputActions.Enable();
-    }
-
-    private void OnDisable()
-    {
-        inputActions.Disable();
-    }
 
     private void Move(Vector2 direction)
     {
-        Debug.Log("Move " + direction);
         if (CanMove(direction)){
             transform.position += (Vector3)direction;
+            flowerCollection.CheckFlowers();
         }
     }
 
@@ -47,5 +39,15 @@ public class PlayerController : MonoBehaviour
         }
 
         return true;
+    }
+    
+    private void OnEnable()
+    {
+        inputActions.Enable();
+    }
+
+    private void OnDisable()
+    {
+        inputActions.Disable();
     }
 }
