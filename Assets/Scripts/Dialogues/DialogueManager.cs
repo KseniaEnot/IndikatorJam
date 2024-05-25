@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
@@ -33,7 +34,7 @@ public class DialogueManager : MonoBehaviour
         if (isRunning && gameObject.activeSelf)
         {
 
-            if (Input.GetKeyDown(KeyCode.Return) || untilNextDialogue <= 0)
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || untilNextDialogue <= 0)
             {
                 dialogueBox.SetActive(true);
                 DisplayNextSentence();
@@ -90,5 +91,6 @@ public class DialogueManager : MonoBehaviour
         }    
         gameObject.SetActive(false);
         isRunning = false;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
