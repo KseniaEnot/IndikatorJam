@@ -179,6 +179,10 @@ PrefabInstance:
       propertyPath: flowerText
       value: 
       objectReference: {fileID: 1465443739}
+    - target: {fileID: 6530115183653241920, guid: 9a573805563f7924282d7870ea507cfd, type: 3}
+      propertyPath: finalSceneIndex
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
