@@ -12,6 +12,8 @@ public class PlayerController : BaseMovement
 
     private GameObject flower = null;
 
+    private bool canMove = true;
+
     void Awake()
     {
         inputActions = new Controls();
@@ -48,11 +50,13 @@ public class PlayerController : BaseMovement
         if (flower != null)
         {
             characterAnimator.SetBool("IsAtack", true);
+            canMove = false;
             StartCoroutine(AttackCoroutine(1.5f, () => 
             { 
                 flower.GetComponentInChildren<Flower>().gameObject.SetActive(false);
                 characterAnimator.SetBool("IsAtack", false); 
                 flowerCollection.GetFlower(flower);
+                canMove = true;
             }));
         }
     }
@@ -60,7 +64,7 @@ public class PlayerController : BaseMovement
     private bool CanMove(Vector2 direction)
     {
         Vector3Int gridPosition = groundTileMap.WorldToCell(transform.position + (Vector3)direction);
-        if (!groundTileMap.HasTile(gridPosition) || collisionTileMap.HasTile(gridPosition) || !moveRandomizer.CanMove()){
+        if (!groundTileMap.HasTile(gridPosition) || collisionTileMap.HasTile(gridPosition) || !moveRandomizer.CanMove() && canMove){
             return false;
         }
 
