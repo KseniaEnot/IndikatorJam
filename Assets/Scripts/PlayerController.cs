@@ -14,34 +14,29 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         inputActions = new Controls();
-        Debug.Log("Actions");
     }
 
     void Start()
     {
-        Debug.Log("STart");
-        inputActions.Main.Move.performed += ctx => Move();
+        inputActions.Main.Move.performed += ctx => Move(ctx.ReadValue<Vector2>());
     }
     
     private void OnEnable()
     {
-        Debug.Log("Enable");
         inputActions.Enable();
     }
 
     private void OnDisable()
     {
-        Debug.Log("Disable");
         inputActions.Disable();
     }
 
-    private void Move()
+    private void Move(Vector2 direction)
     {
-        Debug.Log("Move");
-        //Debug.Log("Move " + direction);
-        //if (CanMove(direction)){
-        //    transform.position += (Vector3)direction;
-        //}
+        Debug.Log("Move " + direction);
+        if (CanMove(direction)){
+            transform.position += (Vector3)direction;
+        }
     }
 
     private bool CanMove(Vector2 direction)
