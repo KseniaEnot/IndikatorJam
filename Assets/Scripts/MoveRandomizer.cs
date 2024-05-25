@@ -49,7 +49,7 @@ public class MoveRandomizer : MonoBehaviour
 
         for(int i = 0; i < timeToRandomize; i++)
         {
-            side = UnityEngine.Random.Range(0, 3);
+            side = UnityEngine.Random.Range(0, 4);
             dice.sprite = diceSpries[side];
             yield return new WaitForSeconds(delayTime);
         }

@@ -35,6 +35,13 @@ public class Flower : BaseMovement
         }
     }
 
+    void OnDisable()
+    {
+        var playerController = player.GetComponent<PlayerController>();
+        playerController.moveRandomizer.movementFinished -= OnPlayerMove;
+        player = null;
+    }
+
     private void OnPlayerMove()
     {
         // Move
