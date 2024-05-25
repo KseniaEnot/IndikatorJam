@@ -22,8 +22,7 @@ public class Flower : BaseMovement
         {
             var playerController = other.GetComponent<PlayerController>();
             player = other.gameObject;
-            playerController.playerMoved += OnPlayerMove;
-            OnPlayerMove();
+            playerController.moveRandomizer.movementFinished += OnPlayerMove;
         }
     }
 
@@ -32,7 +31,7 @@ public class Flower : BaseMovement
         if (other.tag == "Player")
         {
             var playerController = other.GetComponent<PlayerController>();
-            playerController.playerMoved -= OnPlayerMove;
+            playerController.moveRandomizer.movementFinished -= OnPlayerMove;
         }
     }
 
@@ -57,7 +56,7 @@ public class Flower : BaseMovement
 
         if (bestDirection != null)
         {
-            transform.position += (Vector3)bestDirection;        
+            transform.parent.transform.position += (Vector3)bestDirection;        
         }
     }
     

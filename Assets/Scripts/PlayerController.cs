@@ -1,17 +1,16 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class PlayerController : BaseMovement
 {
     public Animator characterAnimator;
-    [SerializeField] private MoveRandomizer moveRandomizer;
-
-    public Action playerMoved = () => {};
+    public MoveRandomizer moveRandomizer;
 
     private Controls inputActions;
     private FlowerCollection flowerCollection;
+
+    private GameObject flower = null;
 
     void Awake()
     {
@@ -45,8 +44,11 @@ public class PlayerController : BaseMovement
     private void OnMoveEnd()
     {
         moveRandomizer.HandleMovement();
-        playerMoved.Invoke();
         characterAnimator.SetBool("IsWalk", false);
+        if (flower != null)
+        {
+            flowerCollection.GetFlower(flower);
+        }
     }
 
     private bool CanMove(Vector2 direction)
@@ -59,11 +61,12 @@ public class PlayerController : BaseMovement
         return true;
     }
     
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if(collision.gameObject.TryGetComponent<Flower>(out var flower))
+        Debug.Log("Olayer entered " + other.name);
+        if (other.tag == "Flower")
         {
-            flowerCollection.GetFlower(flower);
+            flower = other.gameObject;
         }
     }
     

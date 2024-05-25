@@ -10,22 +10,15 @@ public class FlowerCollection : MonoBehaviour
 
     private int count = 0;
 
-    private readonly List<Vector3Int> directions = new List<Vector3Int>(){
-        new Vector3Int(-1, 0, 0),
-        new Vector3Int(1, 0, 0),
-        new Vector3Int(0, -1, 0),
-        new Vector3Int(0, 1, 0)
-    };
-
     void Awake()
     {
         count = 0;
         flowerText.text = count.ToString();
     }
 
-    public void GetFlower(Flower flower)
+    public void GetFlower(GameObject flower)
     {
-        Destroy(flower.gameObject);
+        Destroy(flower);
         count++;
         flowerText.text = count.ToString();
     }
