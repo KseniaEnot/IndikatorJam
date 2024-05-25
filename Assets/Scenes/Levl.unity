@@ -21528,9 +21528,41 @@ PrefabInstance:
       propertyPath: TextSpace
       value: 
       objectReference: {fileID: 547167376}
+    - target: {fileID: 7045513577170350323, guid: 6ca2d1461df2326488c81c4172c88c5a, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1700404171}
+    - target: {fileID: 7045513577170350323, guid: 6ca2d1461df2326488c81c4172c88c5a, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7045513577170350323, guid: 6ca2d1461df2326488c81c4172c88c5a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7045513577170350323, guid: 6ca2d1461df2326488c81c4172c88c5a, type: 3}
+      propertyPath: m_VertexColorAlwaysGammaSpace
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7368619497893939137, guid: 6ca2d1461df2326488c81c4172c88c5a, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743934465954655671, guid: 6ca2d1461df2326488c81c4172c88c5a, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743934465954655671, guid: 6ca2d1461df2326488c81c4172c88c5a, type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743934465954655671, guid: 6ca2d1461df2326488c81c4172c88c5a, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743934465954655671, guid: 6ca2d1461df2326488c81c4172c88c5a, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
