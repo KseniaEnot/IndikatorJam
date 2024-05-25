@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Tilemap groundTileMap;
     [SerializeField] private Tilemap collisionTileMap;
 
+    public Animator characterAnimator;
+
     private Controls inputActions;
     private FlowerCollection flowerCollection;
     private MoveRandomizer moveRandomizer;
@@ -35,9 +37,11 @@ public class PlayerController : MonoBehaviour
     private void Move(Vector2 direction)
     {
         if (CanMove(direction)){
+            characterAnimator.SetBool("IsWalk", true);
             transform.position += (Vector3)direction;
             flowerCollection.CheckFlowers();
             moveRandomizer.HandleMovement();
+            //characterAnimator.SetBool("IsWalk", false);
         }
     }
 
