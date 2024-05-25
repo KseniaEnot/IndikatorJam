@@ -8,6 +8,7 @@ public class MoveRandomizer : MonoBehaviour
 {
     [SerializeField] private List<Sprite> diceSpries;
     [SerializeField] private Image dice;
+    [SerializeField] private GameObject TextSpace;
     [Header("Randomizer Setting")]
     [SerializeField] private int timeToRandomize = 10;
     [SerializeField] private float delayTime = 0.1f;
@@ -26,6 +27,7 @@ public class MoveRandomizer : MonoBehaviour
     public void GenerateNew()
     {
         dice.gameObject.SetActive(true);
+        TextSpace.SetActive(false);
         StartCoroutine(RollTheDice());
     }
 
@@ -35,6 +37,7 @@ public class MoveRandomizer : MonoBehaviour
         if (movementLeft == 0)
         {
             dice.gameObject.SetActive(false);
+            TextSpace.SetActive(true);
             movementFinished.Invoke();
         }
         else
