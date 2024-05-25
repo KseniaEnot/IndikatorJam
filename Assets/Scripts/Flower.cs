@@ -7,7 +7,8 @@ using UnityEngine.Tilemaps;
 public class Flower : BaseMovement
 {
     private GameObject player;
-    
+    public Animator characterAnimator;
+
     private readonly List<Vector3Int> directions = new List<Vector3Int>(){
         new Vector3Int(-1, 0, 0),
         new Vector3Int(1, 0, 0),
@@ -71,9 +72,16 @@ public class Flower : BaseMovement
     {
         Vector3Int gridPosition = groundTileMap.WorldToCell(transform.position + direction);
         if (!groundTileMap.HasTile(gridPosition) || collisionTileMap.HasTile(gridPosition)){
+            characterAnimator.SetBool("IsWalk", true);
+            StartCoroutine(MoveCoroutine((Vector3)direction, OnMoveEnd));
             return false;
         }
 
         return true;
+    }
+
+    private void OnMoveEnd()
+    {
+        characterAnimator.SetBool("IsWalk", false);
     }
 }
