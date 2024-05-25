@@ -8,6 +8,7 @@ public class BaseMovement : MonoBehaviour
 {
     protected Tilemap groundTileMap;
     protected Tilemap collisionTileMap;
+    const int times = 20;
     
     public void Initialize(TIlesManager tilesManager)
     {
@@ -17,13 +18,19 @@ public class BaseMovement : MonoBehaviour
 
     protected IEnumerator MoveCoroutine(Vector3 direction, Action endFunction)
     {
-        const int times = 20;
         for(int i = 0; i < times; i++)
         {
             transform.position += direction / times;
             yield return new WaitForSeconds(0.01f);
         }
         
+        endFunction();
+    }
+
+    protected IEnumerator AttackCoroutine(float seconds, Action endFunction)
+    {
+        yield return new WaitForSeconds(seconds);
+
         endFunction();
     }
 }

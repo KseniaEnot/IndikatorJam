@@ -47,7 +47,13 @@ public class PlayerController : BaseMovement
         characterAnimator.SetBool("IsWalk", false);
         if (flower != null)
         {
-            flowerCollection.GetFlower(flower);
+            characterAnimator.SetBool("IsAtack", true);
+            StartCoroutine(AttackCoroutine(1.5f, () => 
+            { 
+                flower.GetComponentInChildren<Flower>().gameObject.SetActive(false);
+                characterAnimator.SetBool("IsAtack", false); 
+                flowerCollection.GetFlower(flower);
+            }));
         }
     }
 
