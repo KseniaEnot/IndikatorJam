@@ -39,6 +39,7 @@ public class PlayerController : BaseMovement
     {
         if (CanMove(direction)){
             characterAnimator.SetBool("IsWalk", true);
+            canMove = false;
             StartCoroutine(MoveCoroutine(transform, (Vector3)direction, OnMoveEnd));
         }
     }
@@ -61,12 +62,13 @@ public class PlayerController : BaseMovement
             return;
         }
         moveRandomizer.HandleMovement();
+        canMove = true;
     }
 
     private bool CanMove(Vector2 direction)
     {
         Vector3Int gridPosition = groundTileMap.WorldToCell(transform.position + (Vector3)direction);
-        if (!groundTileMap.HasTile(gridPosition) || collisionTileMap.HasTile(gridPosition) || !moveRandomizer.CanMove() && canMove){
+        if (!groundTileMap.HasTile(gridPosition) || collisionTileMap.HasTile(gridPosition) || !moveRandomizer.CanMove() || !canMove){
             return false;
         }
 
