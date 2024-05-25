@@ -45,20 +45,22 @@ public class PlayerController : BaseMovement
 
     private void OnMoveEnd()
     {
-        moveRandomizer.HandleMovement();
         characterAnimator.SetBool("IsWalk", false);
         if (flower != null)
         {
             characterAnimator.SetBool("IsAtack", true);
             canMove = false;
             StartCoroutine(AttackCoroutine(1.5f, () => 
-            { 
+            {
                 flower.GetComponentInChildren<Flower>().gameObject.SetActive(false);
                 characterAnimator.SetBool("IsAtack", false); 
                 flowerCollection.GetFlower(flower);
                 canMove = true;
+                moveRandomizer.HandleMovement();
             }));
+            return;
         }
+        moveRandomizer.HandleMovement();
     }
 
     private bool CanMove(Vector2 direction)
