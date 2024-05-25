@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1931330278157116113}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,9 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f54951dc2c32ded4fac3c053b08fb9d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundTileMap: {fileID: 0}
-  collisionTileMap: {fileID: 0}
   characterAnimator: {fileID: 1931330278157116113}
+  moveRandomizer: {fileID: 0}
 --- !u!114 &6530115183653241920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,7 +115,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0319f9c31f69874cae8c68dd3c8f855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flowerTileMap: {fileID: 0}
   flowerText: {fileID: 0}
 --- !u!95 &1931330278157116113
 Animator:

@@ -1,12 +1,14 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : BaseMovement
 {
-    [SerializeField] private Tilemap groundTileMap;
-    [SerializeField] private Tilemap collisionTileMap;
     public Animator characterAnimator;
     [SerializeField] private MoveRandomizer moveRandomizer;
+
+    public Action playerMoved = () => {};
 
     private Controls inputActions;
     private FlowerCollection flowerCollection;
@@ -37,8 +39,8 @@ public class PlayerController : MonoBehaviour
         if (CanMove(direction)){
             characterAnimator.SetBool("IsWalk", true);
             transform.position += (Vector3)direction;
-            flowerCollection.CheckFlowers();
             moveRandomizer.HandleMovement();
+            playerMoved.Invoke();
             //characterAnimator.SetBool("IsWalk", false);
         }
     }
@@ -51,6 +53,14 @@ public class PlayerController : MonoBehaviour
         }
 
         return true;
+    }
+    
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.TryGetComponent<Flower>(out var flower))
+        {
+            flowerCollection.GetFlower(flower);
+        }
     }
     
     private void OnEnable()

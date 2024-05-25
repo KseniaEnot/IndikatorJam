@@ -6,7 +6,6 @@ using UnityEngine.Tilemaps;
 
 public class FlowerCollection : MonoBehaviour
 {
-    [SerializeField] private Tilemap flowerTileMap;
     [SerializeField] private TextMeshProUGUI flowerText;
 
     private int count = 0;
@@ -24,22 +23,9 @@ public class FlowerCollection : MonoBehaviour
         flowerText.text = count.ToString();
     }
 
-    public void CheckFlowers()
+    public void GetFlower(Flower flower)
     {
-        Vector3Int gridPosition = flowerTileMap.WorldToCell(transform.position);
-        foreach(var tile in directions)
-        {
-            if (flowerTileMap.HasTile(gridPosition + tile))
-            {
-                GetFlower(gridPosition + tile);
-            }
-        }
-    }
-
-    public void GetFlower(Vector3Int position)
-    {
-        Debug.Log("Get Tile " + position);
-        flowerTileMap.SetTile(position, null);
+        Destroy(flower.gameObject);
         count++;
         flowerText.text = count.ToString();
     }
