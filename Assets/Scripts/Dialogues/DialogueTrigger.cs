@@ -5,7 +5,7 @@ using UnityEngine;
 public class DialogueTrigger : MonoBehaviour
 {
     public DialogueManager manager;
-    public void TriggerDialogue()
+    public void Start()
     {
         manager.StartDialogue();
     }
