@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class MoveRandomizer : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class MoveRandomizer : MonoBehaviour
     [Header("Randomizer Setting")]
     [SerializeField] private int timeToRandomize = 10;
     [SerializeField] private float delayTime = 0.1f;
+
+    public Action movementFinished = () => {};
 
     private int movementLeft = 0;
 
@@ -32,7 +35,7 @@ public class MoveRandomizer : MonoBehaviour
         if (movementLeft == 0)
         {
             dice.gameObject.SetActive(false);
-            Debug.Log("Закончилась ходьба");
+            movementFinished.Invoke();
         }
         else
         {
@@ -46,7 +49,7 @@ public class MoveRandomizer : MonoBehaviour
 
         for(int i = 0; i < timeToRandomize; i++)
         {
-            side = Random.Range(0, 3);
+            side = UnityEngine.Random.Range(0, 3);
             dice.sprite = diceSpries[side];
             yield return new WaitForSeconds(delayTime);
         }
